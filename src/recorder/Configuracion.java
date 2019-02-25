@@ -5,12 +5,8 @@
  */
 package recorder;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
 import utiles.ConfiguracionException;
 
 /**
@@ -21,7 +17,7 @@ public class Configuracion {
     private List<Camara> listaDeCamaras;
     private String directorioArchivos = null;
     private int segundosDePausa = 15000;
-    private Properties propObj;
+    public final String EXTENSION = "jpg";
 
     public Configuracion() throws ConfiguracionException{
 //        Gson gson = new GsonBuilder().create();
@@ -51,10 +47,12 @@ public class Configuracion {
             
             Camara camara = new Camara("http://192.168.0.113/axis-cgi/jpg/image.cgi?resolution=704x576", "Camara_Comed");
             camara.setDirectorioLocalDeDrive("1V0N3JH18T1BuPc5Z67yiycU-zA-55dtB");
+//            camara.setDirectorioLocalDeDrive("/Camara_Comed");
             this.listaDeCamaras.add(camara);
             
             camara = new Camara("http://192.168.0.114/axis-cgi/jpg/image.cgi?resolution=704x576", "Camara_Patio");
             camara.setDirectorioLocalDeDrive("1skGXLZP9IVDOgKN5aHghV_lV5xyyl5tI");
+//            camara.setDirectorioLocalDeDrive("/Camara_Patio");
             this.listaDeCamaras.add(camara);
         }
             
@@ -64,6 +62,7 @@ public class Configuracion {
     public String getDirectorioArchivos(){
         if (this.directorioArchivos  == null){
             this.directorioArchivos = "/run/user/1000/gvfs/google-drive:host=gmail.com,user=iglesiascaballada/";
+//            this.directorioArchivos = "/home/marco/Escritorio/imagenes";
         }
         return this.directorioArchivos;
     } 
